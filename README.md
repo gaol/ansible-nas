@@ -1,25 +1,10 @@
 # Ansible NAS
 
-![Available Applications](https://img.shields.io/github/directory-file-count/davestephens/ansible-nas/roles?label=Available%20Applications&style=flat-square)
-[![CI](https://github.com/davestephens/ansible-nas/workflows/CI/badge.svg)](https://github.com/davestephens/ansible-nas/actions?query=workflow%3ACI)
-[![Integration](https://github.com/davestephens/ansible-nas/workflows/Integration/badge.svg)](https://github.com/davestephens/ansible-nas/actions?query=workflow%3AIntegration)
-[![Gitter chat](https://img.shields.io/gitter/room/ansible-nas/chat.svg?logo=gitter&style=flat-square)](https://gitter.im/Ansible-NAS/Chat)
-[![license](https://img.shields.io/github/license/DAVFoundation/api_doc.svg?style=flat-square)](https://github.com/davestephens/ansible-nas/blob/master/LICENSE)
-[![Ko-fi](https://img.shields.io/static/v1.svg?label=ko-fi&message=Buy%20Me%20A%20Coffee&color=orange&style=flat-square&logo=buy-me-a-coffee)](https://ko-fi.com/davestephens)
-
-After getting burned by broken FreeNAS updates one too many times, I figured I could do a much better job myself using just a stock Ubuntu install, some clever Ansible config and a bunch of Docker containers.
-
-## What Ansible-NAS Does
-
-You can configure Ansible-NAS to set up any (or all!) of the applications listed below on your home server.
-
-If you have a spare domain name you can configure applications to be accessible externally to your home LAN too; they'll be configured with a sensible hostname and DNS gets updated accordingly if your home IP address changes.
+This is a tailed from Ansible-NAS for my local pi set up.
 
 ## Available Applications
-
 * [Airsonic](https://airsonic.github.io/) - catalog and stream music
 * [Bazarr](https://github.com/morpheus65535/bazarr) - companion to Radarr and Sonarr for downloading subtitles
-* [Bitwarden](https://github.com/dani-garcia/vaultwarden) - Password Manger (Technically Vaultwarden, a lightweight implementation in Rust)
 * [Booksonic](https://booksonic.org/) - The selfhosted audiobook server
 * [Calibre-web](https://github.com/janeczku/calibre-web) - Provides a clean interface for browsing, reading and downloading eBooks using an existing Calibre database.
 * [Code Server](https://code.visualstudio.com/) - Powerful IDE from Microsoft accessible through the browser
@@ -30,9 +15,6 @@ If you have a spare domain name you can configure applications to be accessible 
 * [DDNS Updater](https://github.com/qdm12/ddns-updater) - dynamic dns updater for serveral providers
 * [Deluge](https://dev.deluge-torrent.org/) - A lightweight, Free Software, cross-platform BitTorrent client.
 * [DokuWiki](https://www.dokuwiki.org/) - A simple to use and highly versatile Open Source wiki software that doesn't require a database.
-* [Drone CI](https://drone.io) - A self-service Continuous Integration platform for busy development teams.
-* [Duplicacy](https://duplicacy.com/) - A web UI for the Duplicacy cloud backup program, which provides lock-free deduplication backups to multiple providers
-* [Duplicati](https://www.duplicati.com/) - for backing up your stuff
 * [Emby](https://emby.media/) - Media streaming and management
 * [ESPHome](https://esphome.io/) - ESP8266/ESP32 programming and management for home automation
 * [Firefly III](https://firefly-iii.org/) - Free and open source personal finance manager
@@ -61,12 +43,8 @@ If you have a spare domain name you can configure applications to be accessible 
 * [Miniflux](https://miniflux.app/) - An RSS news reader
 * [Minio](https://min.io/) - MinIO is a high-performance, S3 compatible object store
 * [Mosquitto](https://mosquitto.org) - An open source MQTT broker
-* [Mumble](https://www.mumble.info) - Open source, low latency, high quality voice chat
-* [Mylar](https://github.com/evilhero/mylar) - An automated Comic Book downloader (cbr/cbz) for use with SABnzbd, NZBGet and torrents
 * [MyMediaForAlexa](https://www.mymediaalexa.com/) - Lets you stream your music collection to your alexa device
-* [n8n](https://n8n.io/) - Nodemation, a node based workflow and automation service like IFTTT.
 * [navidrome](https://www.navidrome.org/) - Modern Music Server and Streamer compatible with Subsonic/Airsonic
-* [netboot.xyz](https://netboot.xyz/) - a PXE boot server
 * [Netdata](https://my-netdata.io/) - An extremely comprehensive system monitoring solution
 * [Nextcloud](https://nextcloud.com/) - A self-hosted Dropbox alternative
 * [Nomad](https://www.nomadproject.io/) - A simple and flexible scheduler and software orchestrator
@@ -91,77 +69,14 @@ If you have a spare domain name you can configure applications to be accessible 
 * [Sabnzbd](https://sabnzbd.org/) - A powerful usenet downloader that FreeNAS provides
 * [Sickchill](https://sickchill.github.io/) - for managing TV episodes
 * [Sonarr](https://sonarr.tv/) - for downloading and managing TV episodes
-* [Speedtest-Tracker](https://github.com/henrywhitaker3/Speedtest-Tracker) - Continuously track your internet speed
-* Stats - Monitor and visualise metrics about your NAS and internet connection using Grafana, Prometheus, Telegraf and more.
-* [Syncthing](https://syncthing.net/) - sync directories with another device
 * [Tautulli](http://tautulli.com/) - Monitor Your Plex Media Server
-* [The Lounge](https://thelounge.chat) - Web based always-on IRC client
 * [TiddlyWiki](https://tiddlywiki.com) - A unique non-linear notebook/wiki for capturing, organizing, and sharing complex information
 * [TimeMachine](https://github.com/awlx/samba-timemachine) - Samba-based mac backup server
 * [Traefik](https://traefik.io/) - Web proxy and SSL certificate manager
 * [Transmission](https://transmissionbt.com/) - BitTorrent client (with OpenVPN if you have a supported VPN provider)
 * [Ubooquity](http://vaemendis.net/ubooquity/) - Book and comic server
 * [uTorrent](https://www.utorrent.com/) - The best torrent downloading app for beginners
-* [Virtual Desktop](https://github.com/RattyDAVE/docker-ubuntu-xrdp-mate-custom) - A virtual desktop running on your NAS.
-* [Wallabag](https://wallabag.org/) - Save and classify articles. Read them later.
-* [Watchtower](https://github.com/v2tec/watchtower) - Monitor your Docker containers and update them if a new version is available
 * [Wireshark](https://www.wireshark.org/) - the world’s foremost and widely-used network protocol analyzer.
 * [Woodpecker-CI](https://woodpecker-ci.org) - a simple CI engine with great extensibility, forked from Drone.
 * [YouTubeDL-Material](https://github.com/Tzahi12345/YoutubeDL-Material) - Self-hosted YouTube downloader built on Material Design
-* [ZNC](https://wiki.znc.in/ZNC) - IRC bouncer to stay connected to favourite IRC networks and channels
 
-## Preconfigured Application Stacks
-
-Ansible-NAS application [stacks](https://ansible-nas.io/docs/category/stacks/) are a number of applications deployed together and preconfigured to perform a common goal.
-
-* [Logging](https://ansible-nas.io/docs/applications/stacks/logging/) - application logging capture and search service based on Grafana Loki.
-
-## What This Could Do
-
-Ansible-NAS can run anything that's in a Docker image, which is why Portainer is included. A NAS configuration is a pretty personal thing based on what you download, what media you view, how many photos you take...so it's difficult to please everyone.
-
-That said, if specific functionality you want isn't included and you think others could benefit, add it and raise a PR!
-
-## What This Doesn't Do
-
-Ansible NAS doesn't set up your disk partitions, primarily because getting it wrong can be incredibly destructive. That aside, configuring partitions is usually a one-time (or very infrequent) event, so there's not much to be gained by automating it. Check out the [docs](https://ansible-nas.io/docs/) for recommended setups.
-
-## Installation
-
-See [Installation](https://ansible-nas.io/docs/getting-started/installation/).
-
-## Documentation
-
-You can read the docs [here](https://ansible-nas.io). PRs for more documentation always welcome!
-
-## Migrating from FreeNAS
-
-Read the [migrating from FreeNAS](https://ansible-nas.io/docs/further-configuration/migrating-from-freenas/) docs.
-
-## Requirements
-
-* Ansible NAS targets the latest Ubuntu LTS release, which is currently Ubuntu Server 22.04 LTS.
-* You can run Ansible-NAS on whatever hardware you like, read the docs for more info. I use an HP Microserver.
-
-## Getting Help
-
-Getting help is easy! You can:
-
-* Read the [docs](https://ansible-nas.io/docs/)
-* Start a [discussion](https://github.com/davestephens/ansible-nas/discussions)
-* Raise an [issue](https://github.com/davestephens/ansible-nas/issues) if you think you've found a bug
-* Chat on [Gitter](https://gitter.im/Ansible-NAS/Chat)
-
-## Contributing
-
-Contributions are always welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) first.
-
-## Support
-
-If you've enjoyed Ansible-NAS as much as I do working on it, please consider [buying me a coffee](https://ko-fi.com/davestephens) :coffee:
-
-## Thanks
-
-The awesome dudes at [JetBrains](https://www.jetbrains.com/?from=Ansible-NAS) for supplying core contributors with JetBrains Open Source licenses!
-
-All of the awesome contributors to Ansible-NAS!
