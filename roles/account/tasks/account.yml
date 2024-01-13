@@ -1,0 +1,40 @@
+---
+- ansible.builtin.assert:
+    that:
+      - account is defined
+      - account.group is defined
+      - account.group != ""
+      - account.gid is defined
+      - account.username is defined
+      - account.username != ""
+      - account.uid is defined
+      - account.home is defined
+      - account.home != ""
+    quiet: true
+
+- name: "Ensure group {{ account.group }} exists."
+  ansible.builtin.group:
+    name: "{{ account.group }}"
+    gid: "{{ account.gid }}"
+    state: present
+
+- name: "Ensure user {{ account.username }} with UID {{ account.uid }} exists."
+  ansible.builtin.user:
+    name: "{{ account.username }}"
+    password: "{{ account.password }}"
+    uid: "{{ account.uid }}"
+    group: "{{ account.group }}"
+    home: "{{ account.home }}"
+
+- name: "Ensure path provided for home is valid: {{ account.home }}"
+  ansible.builtin.stat:
+    path: "{{ account.home }}"
+  register: account_home
+
+- name: "Ensure home directory {{ account.home }} exists."
+  ansible.builtin.file:
+    state: directory
+    path: "{{ account.home }}"
+    owner: "{{ account.username }}"
+    group: "{{ account.group }}"
+  when: account_home.stat is defined

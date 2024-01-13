@@ -1,4 +1,4 @@
-
+---
 - name: Set up mounts storages
   ansible.builtin.include_tasks: mount.yml
   with_items: "{{ mounts }}"

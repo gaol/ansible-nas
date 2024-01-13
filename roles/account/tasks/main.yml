@@ -1,0 +1,11 @@
+---
+- ansible.builtin.assert:
+    that:
+      - accounts is defined
+      - accounts | length > 0
+    quiet: true
+
+- ansible.builtin.include_tasks: account.yml
+  with_items: "{{ accounts }}"
+  loop_control:
+    loop_var: account
