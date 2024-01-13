@@ -5,7 +5,7 @@
     quiet: true
 
 - name: Make sure {{ mount.path }} exists
-  file:
+  ansible.builtin.file:
     path: "{{ mount.path }}"
     state: directory
     owner: "{{ mount.user }}"
