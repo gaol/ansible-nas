@@ -1,0 +1,9 @@
+
+- name: Set up mounts storages
+  ansible.builtin.include_tasks: mount.yml
+  with_items: "{{ mounts }}"
+  loop_control:
+    loop_var: mount
+  when:
+    - mounts is defined
+    - mounts | length > 0

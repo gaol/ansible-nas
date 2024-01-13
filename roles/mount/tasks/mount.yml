@@ -1,0 +1,21 @@
+- ansible.builtin.assert:
+    that:
+      - mount is defined
+      - mount.path is defined
+    quiet: true
+
+- name: Make sure {{ mount.path }} exists
+  file:
+    path: "{{ mount.path }}"
+    state: directory
+    owner: "{{ mount.user }}"
+    group: "{{ mount.group }}"
+    mode: "{{ mount.permission }}"
+
+- name: "Make sure {{ mount.path }} is mounted"
+  ansible.posix.mount:
+    path: "{{ mount.path }}"
+    src: "UUID={{ mount.uuid }}"
+    state: mounted
+    fstype: "{{ mount.fstype | default('ntfs-3g') }}"
+    opts: "{{ mount.opts | default('nosuid,nodev,nofail,locale=zh_CN.utf8') }}"
