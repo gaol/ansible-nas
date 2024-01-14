@@ -1,0 +1,40 @@
+---
+- name: "Set Hostname"
+  ansible.builtin.import_tasks: hostname.yml
+  when:
+    - ansible_nas_hostname is defined
+
+- name: "Set Timezone"
+  community.general.timezone: 
+    name: "{{ ansible_nas_timezone }}"
+  when:
+    - ansible_nas_timezone is defined
+  
+- name: "Set Locales"
+  community.general.locale_gen:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ server_locales }}"
+  when:
+    - server_locales is defined
+    - server_locales | length > 0
+
+- name: "Set Selinux"
+  ansible.posix.selinux:
+    policy: targeted
+    state: "{{ selinux_state }}"
+  when:
+    - selinux_state is defined
+    - selinux_state != ""
+
+- name: "Configure Kernel {{ sysctl.name }}"
+  ansible.posix.sysctl:
+    name: "{{ sysctl.name }}"
+    value: "{{ sysctl.value }}"
+    state: present
+  with_items: "{{ sysctl_entries }}"
+  loop_control:
+    loop_var: sysctl
+  when:
+    - sysctl_entries is defined
+    - sysctl_entries | length > 0

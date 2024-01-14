@@ -1,0 +1,11 @@
+---
+- name: Set hostname
+  ansible.builtin.hostname:
+    name: "{{ ansible_nas_hostname }}"
+  when: "ansible_fqdn != ansible_nas_hostname"
+
+- name: Update hosts file
+  ansible.builtin.lineinfile:
+    dest: /etc/hosts
+    line: "127.0.0.1\tlocalhost\t{{ ansible_nas_hostname }}"
+    regexp: "^127.0.0.1"

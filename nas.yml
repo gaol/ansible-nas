@@ -8,5 +8,6 @@
       - vars/nas.yml
 
   roles:
+    - role: os
     - role: account
     - role: mount
