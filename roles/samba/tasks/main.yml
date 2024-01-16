@@ -1,0 +1,44 @@
+- name: Install Samba
+  ansible.builtin.package:
+    name: samba
+    state: present
+
+- name: Ensure proper ownership for internal and public share roots
+  file:
+    path: "{{ item.path }}"
+    state: directory
+    owner: "{{ item.owner | default(nas_main_user)}}"
+    group: "{{ item.group | default(nas_main_group)}}"
+    mode: 0770
+    force: yes
+  with_items: "{{ (samba.backup_shares | default([])) | union(samba.public_shares | default([])) }}"
+
+- name: Create Samba Users
+  ansible.builtin.include_tasks: user.yml
+  loop: "{{ samba.users }}"
+  loop_control:
+    loop_var: samba_user
+  when:
+    - samba.users is defined
+    - samba.users | length > 0
+
+- name: Configure firewall to allow Samba service 
+  community.general.ufw:
+    rule: allow
+    name: Samba
+
+- name: Configure Samba Service
+  ansible.builtin.template:
+    src: "smb.conf.j2"
+    dest: /etc/samba/smb.conf
+    validate: testparm -s %s
+  notify:
+    - start samba
+
+- name: "Configure ufw service to allow samba"
+  community.general.ufw:
+    rule: allow
+    name: Samba
+  when:
+    - firewall_service_package == "ufw"
+

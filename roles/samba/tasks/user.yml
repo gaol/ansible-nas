@@ -1,0 +1,10 @@
+- name: Check if user '{{ samba_user.name }} exists'
+  shell: "pdbedit -L | grep '^{{ samba_user.name }}:'"
+  register: samba_user_exists
+  changed_when: no
+  failed_when: "'not found' in samba_user_exists.stdout"
+  run_once: yes
+
+- name: Create samba user '{{ samba_user.name }}'
+  shell: "(echo {{ samba_user.samba_password }}; echo {{ samba_user.samba_password }}) | smbpasswd -s -a {{ samba_user.name }}"
+  when: "samba_user_exists.rc == 1"

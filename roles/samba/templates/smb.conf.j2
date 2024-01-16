@@ -1,0 +1,24 @@
+## Backup Shares
+{% for share in samba.backup_shares %}
+[{{ share.name }}]
+  writeable = yes
+  create mask = 0666
+  directory mask = 0777
+  guest ok = no
+  available = no
+  comment = Backup share of '{{ share.name }}'.
+  path = {{ share.path }}
+  valid users = {{ share.owner | default(nas_main_user) }}
+  write list = {{ share.owner | default(nas_main_user) }}
+{% endfor %}
+
+## Public shares
+{% for share in samba.public_shares %}
+[{{ share.name }}]
+  writeable = no
+  guest ok = yes
+  available = yes
+  comment = Public share of '{{ share.name }}'.
+  path = {{ share.path }}
+  force group = {{ share.group | default(nas_main_group) }}
+{% endfor %}

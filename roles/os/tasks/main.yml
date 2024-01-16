@@ -5,11 +5,11 @@
     - ansible_nas_hostname is defined
 
 - name: "Set Timezone"
-  community.general.timezone: 
+  community.general.timezone:
     name: "{{ ansible_nas_timezone }}"
   when:
     - ansible_nas_timezone is defined
-  
+
 - name: "Set Locales"
   community.general.locale_gen:
     name: "{{ item }}"
@@ -27,7 +27,7 @@
     - selinux_state is defined
     - selinux_state != ""
 
-- name: "Configure Kernel {{ sysctl.name }}"
+- name: "Configure Kernel parameters"
   ansible.posix.sysctl:
     name: "{{ sysctl.name }}"
     value: "{{ sysctl.value }}"
@@ -38,3 +38,11 @@
   when:
     - sysctl_entries is defined
     - sysctl_entries | length > 0
+
+- name: "Install Firewall Service"
+  ansible.builtin.package:
+    name: "{{ firewall_service_package }}"
+    state: present
+
+- name: "Configure Firewall Service"
+  ansible.builtin.import_tasks: "{{ firewall_service_package }}.yml"

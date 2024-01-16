@@ -1,0 +1,6 @@
+---
+- name: start samba
+  service:
+    name: smbd
+    state: started
+    enabled: yes

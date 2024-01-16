@@ -1,0 +1,10 @@
+---
+allowed_services:
+  - port: 80
+    proto: "tcp"
+  - port: 443
+    proto: "tcp"
+  - port: 8080
+    proto: "tcp"
+  - port: 8443
+    proto: "tcp"

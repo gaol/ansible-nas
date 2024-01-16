@@ -11,3 +11,4 @@
     - role: os
     - role: account
     - role: mount
+    - role: samba

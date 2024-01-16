@@ -1,0 +1,13 @@
+---
+- name: Make sure UFW Service is started and enabled
+  ansible.builtin.service:
+    name: "ufw"
+    state: "started"
+    enabled: yes
+
+- name: "Allow common services in ufw"
+  community.general.ufw:
+    rule: allow
+    port: "{{ item.port }}"
+    proto: "{{ item.proto }}"
+  with_items: "{{ allowed_services }}"
