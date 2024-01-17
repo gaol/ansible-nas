@@ -2,7 +2,7 @@
 
 minidlna_package: "minidlna"
 
-minidlna_merge_media_dirs: yes
+minidlna_merge_media_dirs: "yes"
 minidlna_root_container: 'B'
 
 minidlna_friendly_name: "{{ ansible_nas_hostname }}"
