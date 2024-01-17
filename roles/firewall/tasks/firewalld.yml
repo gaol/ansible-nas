@@ -1,0 +1,13 @@
+---
+- name: Make sure Firewalld Service is started and enabled
+  ansible.builtin.service:
+    name: "firewalld"
+    state: "started"
+    enabled: yes
+
+- name: "Allow Services in firewalld"
+  ansible.posix.firewalld:
+    port: "{{ item.port }}/{{ item.proto | default('tcp') }}"
+    state: "{{ item.state | default('enabled') }}"
+    permanent: "{{ item.permanent | default(true) }}"
+  with_items: "{{ (firewall_common_allowed_services | default([])) | union(customized_allowed_services | default([])) }}"

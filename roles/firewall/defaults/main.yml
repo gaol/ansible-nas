@@ -1,0 +1,28 @@
+---
+firewall_common_allowed_services:
+  - port: 22
+    proto: "tcp"
+    rule: "allow"
+    state: "enabled"
+    permanent: true
+  - port: 80
+    proto: "tcp"
+    rule: "allow"
+    state: "enabled"
+    permanent: true
+  - port: 443
+    proto: "tcp"
+    rule: "allow"
+    state: "enabled"
+    permanent: true
+  - port: 8080
+    proto: "tcp"
+    rule: "allow"
+    state: "enabled"
+    permanent: true
+  - port: 8443
+    proto: "tcp"
+    rule: "allow"
+    state: "enabled"
+    permanent: true
+

@@ -5,10 +5,11 @@
   become: yes
   become_user: root
   vars_files:
-      - vars/nas.yml
+    - vars/nas.yml
 
   roles:
     - role: os
+    - role: firewall
     - role: account
     - role: mount
     - role: samba
