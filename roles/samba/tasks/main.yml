@@ -22,7 +22,7 @@
     - samba.users is defined
     - samba.users | length > 0
 
-- name: Configure firewall to allow Samba service 
+- name: Configure firewall to allow Samba service
   community.general.ufw:
     rule: allow
     name: Samba
@@ -41,4 +41,3 @@
     name: Samba
   when:
     - firewall_service_package == "ufw"
-

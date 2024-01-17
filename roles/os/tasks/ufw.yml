@@ -11,3 +11,13 @@
     port: "{{ item.port }}"
     proto: "{{ item.proto }}"
   with_items: "{{ allowed_services }}"
+
+- name: "Allow customized services in ufw"
+  community.general.ufw:
+    rule: allow
+    port: "{{ item.port }}"
+    proto: "{{ item.proto }}"
+  with_items: "{{ customized_allowed_services }}"
+  when:
+    - customized_allowed_services is defined
+    - customized_allowed_services | length > 0
