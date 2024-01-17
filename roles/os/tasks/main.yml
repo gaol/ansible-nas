@@ -1,4 +1,9 @@
 ---
+- name: Set login banner
+  ansible.builtin.copy:
+    src: motd.txt
+    dest: /etc/motd
+
 - name: "Set Hostname"
   ansible.builtin.import_tasks: hostname.yml
   when:
@@ -46,3 +51,12 @@
 
 - name: "Configure Firewall Service"
   ansible.builtin.import_tasks: "{{ firewall_service_package }}.yml"
+
+- name: "Install extra packages"
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ ansible_nas_extra_packages }}"
+  when:
+    - ansible_nas_extra_packages is defined
+    - ansible_nas_extra_packages | length > 0
