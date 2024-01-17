@@ -8,7 +8,7 @@ inventories
 roles/bertvv.samba
 roles/geerlingguy.docker
 roles/geerlingguy.nfs
-vars/
+vars/nas.yml
 
 # Vim
 [._]sw[a-p]
