@@ -1,0 +1,6 @@
+---
+- name: start minidlna
+  service:
+    name: minidlna
+    state: started
+    enabled: yes

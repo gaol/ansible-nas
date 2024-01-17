@@ -12,3 +12,4 @@
     - role: account
     - role: mount
     - role: samba
+    - role: minidlna
