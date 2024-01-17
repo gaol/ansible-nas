@@ -9,6 +9,7 @@
 
   roles:
     - role: os
+    - role: sshd
     - role: firewall
     - role: account
     - role: mount
