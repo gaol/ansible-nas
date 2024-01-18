@@ -16,7 +16,7 @@ Protocol 2
 # SELinux about this change.
 # semanage port -a -t ssh_port_t -p tcp #PORTNUMBER
 #
-Port {{ sshd.port }} 
+Port {{ sshd.port }}
 #AddressFamily any
 #ListenAddress 0.0.0.0
 #ListenAddress ::
@@ -138,7 +138,8 @@ AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
 AcceptEnv XMODIFIERS
 
 # override default of no subsystems
-Subsystem	sftp	/usr/libexec/openssh/sftp-server
+#Subsystem	sftp	/usr/libexec/openssh/sftp-server
+Subsystem   sftp    internal-sftp
 
 # Example of overriding settings on a per-user basis
 #Match User anoncvs
