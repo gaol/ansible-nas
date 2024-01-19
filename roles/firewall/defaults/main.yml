@@ -15,6 +15,11 @@ firewall_common_allowed_services:
     rule: "allow"
     state: "enabled"
     permanent: true
+  - port: 8000
+    proto: "tcp"
+    rule: "allow"
+    state: "enabled"
+    permanent: true
   - port: 8080
     proto: "tcp"
     rule: "allow"
