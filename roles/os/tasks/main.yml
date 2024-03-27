@@ -64,6 +64,6 @@
 
 - name: "set default editor"
   ansible.builtin.lineinfile:
-    path: "/etc/bashrc"
+    path: "{{ global_bash_rc }}"
     state: present
     line: "export EDITOR=vim"

@@ -7,3 +7,4 @@ ansible_nas_extra_packages:
 
 screen_turn_off_mode: 'suspend'
 default_editor: 'vim'
+global_bash_rc: '/etc/bashrc'
