@@ -1,6 +1,6 @@
 ---
 - name: Ansible-NAS
-  hosts: all
+  hosts: pi
   gather_facts: yes
   become: yes
   become_user: root

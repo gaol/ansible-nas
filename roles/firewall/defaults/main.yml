@@ -16,6 +16,10 @@ firewall_common_allowed_services:
     state: "enabled"
     permanent: true
   - port: 8000
+    proto: "udp"
+    rule: "allow"
+    state: "enabled"
+  - port: 8000
     proto: "tcp"
     rule: "allow"
     state: "enabled"

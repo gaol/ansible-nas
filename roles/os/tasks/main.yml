@@ -3,6 +3,8 @@
   ansible.builtin.copy:
     src: motd.txt
     dest: /etc/motd
+  when:
+    - ansible_login_banner is defined
 
 - name: "Set Hostname"
   ansible.builtin.import_tasks: hostname.yml
@@ -52,3 +54,16 @@
   when:
     - ansible_nas_extra_packages is defined
     - ansible_nas_extra_packages | length > 0
+
+- name: "Set if turning off screen should keep running"
+  ansible.builtin.lineinfile:
+    path: "/etc/systemd/logind.conf"
+    state: present
+    regexp: "^HandleLidSwitch="
+    line: "HandleLidSwitch={{ screen_turn_off_mode }}"
+
+- name: "set default editor"
+  ansible.builtin.lineinfile:
+    path: "/etc/bashrc"
+    state: present
+    line: "export EDITOR=vim"

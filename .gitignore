@@ -8,7 +8,7 @@ inventories
 roles/bertvv.samba
 roles/geerlingguy.docker
 roles/geerlingguy.nfs
-vars/nas.yml
+vars/*
 
 # Vim
 [._]sw[a-p]
@@ -18,3 +18,5 @@ Session.vim
 
 # IntelliJ
 /.idea/
+
+.vscode/*

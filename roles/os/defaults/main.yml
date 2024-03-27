@@ -1,7 +1,9 @@
 ---
 ansible_nas_extra_packages:
-  - zfsutils-linux
   - unzip
-  - lm-sensors
   - python
   - python3-pip
+  - vim
+
+screen_turn_off_mode: 'suspend'
+default_editor: 'vim'

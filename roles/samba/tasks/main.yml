@@ -9,7 +9,7 @@
     state: directory
     owner: "{{ item.owner | default(nas_main_user)}}"
     group: "{{ item.group | default(nas_main_group)}}"
-    mode: 0770
+    #mode: 0770
     force: yes
   with_items: "{{ (samba.backup_shares | default([])) | union(samba.public_shares | default([])) }}"
 

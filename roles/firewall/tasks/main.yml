@@ -4,7 +4,7 @@
       - firewall_service_package is defined
     quiet: true
 
-- name: "Install Firewall Service Packag: {{ firewall_service_package }}"
+- name: "Install Firewall Service Package: {{ firewall_service_package }}"
   ansible.builtin.package:
     name: "{{ firewall_service_package }}"
     state: present

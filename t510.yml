@@ -1,0 +1,13 @@
+---
+- name: T510
+  hosts: t510
+  gather_facts: yes
+  become: true
+  vars_files:
+    - vars/t510.yml
+
+  roles:
+    - role: os
+    - role: sshd
+    - role: firewall
+    - role: account
