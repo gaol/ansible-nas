@@ -1,11 +1,11 @@
 ---
-# Fedora IoT
-- name: T510
-  hosts: t510
+# Fedora 39
+- name: T540
+  hosts: t540
   gather_facts: yes
   become: true
   vars_files:
-    - vars/t510.yml
+    - vars/t540.yml
 
   roles:
     - role: os

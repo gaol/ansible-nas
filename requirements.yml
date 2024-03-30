@@ -9,6 +9,9 @@ roles:
   - name: bertvv.samba
     version: v2.7.1
 
+  - name: bertvv.hosts
+    version: v1.2.0
+
   - name: geerlingguy.nfs
     version: 2.0.0
 

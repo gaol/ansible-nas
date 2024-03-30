@@ -6,6 +6,15 @@
   when:
     - ansible_login_banner is defined
 
+- name: "Install extra packages"
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ ansible_nas_extra_packages }}"
+  when:
+    - ansible_nas_extra_packages is defined
+    - ansible_nas_extra_packages | length > 0
+
 - name: "Set Hostname"
   ansible.builtin.import_tasks: hostname.yml
   when:
@@ -46,15 +55,6 @@
     - sysctl_entries is defined
     - sysctl_entries | length > 0
 
-- name: "Install extra packages"
-  ansible.builtin.package:
-    name: "{{ item }}"
-    state: present
-  with_items: "{{ ansible_nas_extra_packages }}"
-  when:
-    - ansible_nas_extra_packages is defined
-    - ansible_nas_extra_packages | length > 0
-
 - name: "Set if turning off screen should keep running"
   ansible.builtin.lineinfile:
     path: "/etc/systemd/logind.conf"
@@ -62,7 +62,7 @@
     regexp: "^HandleLidSwitch="
     line: "HandleLidSwitch={{ screen_turn_off_mode }}"
 
-- name: "set default editor"
+- name: "Set default editor"
   ansible.builtin.lineinfile:
     path: "{{ global_bash_rc }}"
     state: present
