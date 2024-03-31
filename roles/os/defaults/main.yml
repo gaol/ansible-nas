@@ -8,3 +8,4 @@ ansible_nas_extra_packages:
 screen_turn_off_mode: 'suspend'
 default_editor: 'vim'
 global_bash_rc: '/etc/bashrc'
+systemctl_default_target: 'graphical.target'

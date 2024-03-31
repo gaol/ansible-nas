@@ -67,3 +67,9 @@
     path: "{{ global_bash_rc }}"
     state: present
     line: "export EDITOR=vim"
+
+- name: "Set default systemctl target "
+  ansible.builtin.file:
+    src: "/usr/lib/systemd/system/{{ systemctl_default_target }}"
+    dest: /etc/systemd/system/default.target
+    state: link
